@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ActualStatus__c</fullName>
+    <label>Actual Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>eTutorStatus__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New Work order</fullName>
+                <default>true</default>
+                <label>New Work order</label>
+            </value>
+            <value>
+                <fullName>Assigned to Main Handler</fullName>
+                <default>false</default>
+                <label>Assigned to Main Handler</label>
+            </value>
+            <value>
+                <fullName>Main Handler Analysis</fullName>
+                <default>false</default>
+                <label>Main Handler Analysis</label>
+            </value>
+            <value>
+                <fullName>Pending with customer for Initial payment</fullName>
+                <default>false</default>
+                <label>Pending with customer for Initial payment</label>
+            </value>
+            <value>
+                <fullName>Initial Payment Received</fullName>
+                <default>false</default>
+                <label>Initial Payment Received</label>
+            </value>
+            <value>
+                <fullName>Pending with Team member</fullName>
+                <default>false</default>
+                <label>Pending with Team member</label>
+            </value>
+            <value>
+                <fullName>Team member open Queries</fullName>
+                <default>false</default>
+                <label>Team member open Queries</label>
+            </value>
+            <value>
+                <fullName>Pending with Customer for Queires</fullName>
+                <default>false</default>
+                <label>Pending with Customer for Queires</label>
+            </value>
+            <value>
+                <fullName>Main handler work review</fullName>
+                <default>false</default>
+                <label>Main handler work review</label>
+            </value>
+            <value>
+                <fullName>Main Handler review completed</fullName>
+                <default>false</default>
+                <label>Main Handler review completed</label>
+            </value>
+            <value>
+                <fullName>Work delivered</fullName>
+                <default>false</default>
+                <label>Work delivered</label>
+            </value>
+            <value>
+                <fullName>Pending with Student</fullName>
+                <default>false</default>
+                <label>Pending with Student</label>
+            </value>
+            <value>
+                <fullName>Declined</fullName>
+                <default>false</default>
+                <label>Declined</label>
+            </value>
+            <value>
+                <fullName>No Bandwidth</fullName>
+                <default>false</default>
+                <label>No Bandwidth</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Work Order Received</controllingFieldValue>
+            <valueName>New Work order</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Work Order Received</controllingFieldValue>
+            <valueName>Assigned to Main Handler</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Work Order Received</controllingFieldValue>
+            <valueName>Main Handler Analysis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Payment Pending</controllingFieldValue>
+            <valueName>Pending with customer for Initial payment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Work in Progress</controllingFieldValue>
+            <valueName>Initial Payment Received</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Work in Progress</controllingFieldValue>
+            <valueName>Pending with Team member</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Work in Progress</controllingFieldValue>
+            <valueName>Team member open Queries</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Work in Progress</controllingFieldValue>
+            <valueName>Main handler work review</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Additional information Required</controllingFieldValue>
+            <valueName>Pending with Customer for Queires</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Work completed. Payment Pending</controllingFieldValue>
+            <valueName>Main Handler review completed</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Completed</controllingFieldValue>
+            <controllingFieldValue>Plagiarism Check Report Completed</controllingFieldValue>
+            <controllingFieldValue>Plagiarism Free Report Completed</controllingFieldValue>
+            <valueName>Work delivered</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Declined</controllingFieldValue>
+            <valueName>Pending with Student</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Declined</controllingFieldValue>
+            <valueName>Declined</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Declined</controllingFieldValue>
+            <valueName>No Bandwidth</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

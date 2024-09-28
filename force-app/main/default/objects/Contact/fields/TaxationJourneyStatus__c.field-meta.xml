@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TaxationJourneyStatus__c</fullName>
+    <label>Taxation Journey Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Consent Form Shared</fullName>
+                <default>false</default>
+                <label>Consent Form Shared</label>
+            </value>
+            <value>
+                <fullName>Student Consent Acceptance</fullName>
+                <default>false</default>
+                <label>Student Consent Acceptance</label>
+            </value>
+            <value>
+                <fullName>Student Consent Rejection</fullName>
+                <default>false</default>
+                <label>Student Consent Rejection</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

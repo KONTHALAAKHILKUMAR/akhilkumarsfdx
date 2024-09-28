@@ -1,0 +1,150 @@
+<template>
+    <div class="mainDiv" style=" margin: auto 50px;"> 
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1  ">
+                <div class="slds-grid slds-wrap box1 ">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5 slds-box box" style="border: 1px solid #F1788D;">
+                        <p class="boxText">Total Universities</p>
+                        <h1 class="boxNumber">100</h1>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5 slds-box box" style="border: 1px solid #9567E8;">
+                        <p class="boxText" >Students</p>
+                        <h1 class="boxNumber">200</h1>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5 slds-box box" style="border: 1px solid #00A2B3;">
+                        <p class="boxText">Mentors</p>
+                        <h1 class="boxNumber">300</h1>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-5 slds-box box" style="border: 1px solid #95B70B;">
+                        <p class="boxText">Programs</p>
+                        <h1 class="boxNumber">400</h1>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-5 slds-box box" style="border: 1px solid #CF3E53;">
+                        <p class="boxText">Courses</p>
+                        <h1 class="boxNumber">500</h1>
+                    </div>
+                   
+                </div>
+                </div>
+            </div>
+        </div>
+
+ 
+
+<div style="display: flex; align-items: center; gap: 5px; margin-top: 20px; margin-left: 50px;">
+    <!-- Search Input Field -->
+    <!-- <div style="flex: 1; height: 34px; border-radius: 4px; background: #FFF;"> -->
+        <div style="width: 300px;height: 34px; border-radius: 4px;background: #FFF;" >
+        <lightning-input 
+            type="text" 
+            label="University Name" 
+            value={searchQuery} 
+            onchange={handleSearchChange}
+            placeholder="Enter university name">
+        </lightning-input>
+    </div>
+
+    <!-- Search Button -->
+    <div class="slds-col" style="padding: 0px 0px 0px 20px;border-radius: 4px;margin-top: 43px;color: #FFF;font-family: Montserrat;font-size: 14px;font-style: normal;font-weight: 500;line-height: normal;">
+        <button 
+            class="slds-button slds-button_brand" 
+            onclick={handleSearch}>
+            Search
+        </button>
+    </div>
+</div>
+
+
+<!-- Table -->
+<div class="slds-modal__content  scroll-content" style="max-height: 450px; margin-top: 25px; margin-left: 50px; margin-right: 100px;">
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover" style="width: 100%; height: auto;" aria-label="Table of Universities with vertical borders">
+        <thead>
+            <tr class="slds-line-height_reset table-header">
+                <th scope="col" style="background-color: #FFFECE;">S. No</th>
+                <th scope="col" style="background-color: #FFFECE;">Name of University</th>
+                <th scope="col" style="background-color: #FFFECE;">No. Programs offered</th>
+                <th scope="col" style="background-color: #FFFECE;">Students</th>
+                <th scope="col" style="background-color: #FFFECE;">Mentor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Display paginated data -->
+            <template if:true={paginatedData}>
+                <template for:each={paginatedData} for:item="item">
+                    <tr key={item.rowNumber}>
+                        <td>{item.rowNumber}</td>
+                        <td><a href="javascript:void(0);" data-name={item.name} onclick={handleUniversityClick}>{item.name}</a>
+                        </td>
+                        <td>{item.programs}</td>
+                        <td>{item.students}</td>
+                        <td>{item.mentors}</td>
+                    </tr>
+                </template>
+            </template>
+            <!-- Display message if no data -->
+            <template if:false={paginatedData}>
+                <tr>
+                    <td colspan="5">No Data Available</td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <footer slot="footer" style=" margin-top: 20px;">
+        <div style="display: flex; ">
+            <!-- Current Page Indicator -->
+            <span style="text-align: left; margin-right: 10px;">
+                Page {currentPage}
+            </span>
+        
+            <!-- Pagination -->
+            <ul class="slds-pagination" style="display: flex; margin-left:auto;">
+                <!-- Previous Button -->
+                <li class="slds-button slds-button_icon page-item" onclick={previousPage}>
+                    <a class="slds-button__icon" href="javascript:void(0);" aria-label="Previous">
+                        <lightning-icon icon-name="utility:chevronleft" size="x-small"></lightning-icon>
+                    </a>
+                </li>
+        
+                <!-- Page Numbers
+                <template for:each={pages} for:item="page">
+                    <li class="slds-button slds-button_icon page-item" key={page.key} data-page={page.number} onclick={gotoPage}>
+                     
+                        <a class="slds-button__icon" href="javascript:void(0);">{page.label}</a>
+                    </li>
+                </template> -->
+
+                <!-- <template for:each={pages} for:item="page">
+                    <li class="slds-button slds-button_icon page-item" key={page.key} data-page={page.number} onclick={gotoPage}>
+                       
+                        <a class="slds-button__icon" href="javascript:void(0);">{page.label}</a>
+                    </li>
+                </template>
+            
+             <template for:each={pages} for:item="page">
+                <li class="slds-button slds-button_icon page-item {page.isCurrent ? 'current-page' : ''}" key={page.key} data-page={page.number} onclick={gotoPage}>
+                    <! Render page number or ellipsis -->
+                    <!-- <a class="slds-button__icon" href="javascript:void(0);">{page.label}</a>
+                </li>
+            </template>
+         --> 
+
+         <template for:each={pages} for:item="page">
+            <li class="slds-button slds-button_icon page-item {page.isCurrent ? 'current-page' : ''}" key={page.key} data-page={page.number} onclick={gotoPage}>
+                <!-- Render page number or ellipsis -->
+                <a class="slds-button__icon" href="javascript:void(0);">{page.label}</a>
+            </li>
+        </template>
+                <!-- Next Button -->
+                <li class="slds-button slds-button_icon page-item" onclick={nextPage}>
+                    <a class="slds-button__icon" href="javascript:void(0);" aria-label="Next">
+                        <lightning-icon icon-name="utility:chevronright" size="x-small"></lightning-icon>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+    </footer>
+</div>
+</template>

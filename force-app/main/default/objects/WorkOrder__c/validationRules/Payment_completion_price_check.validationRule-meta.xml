@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_completion_price_check</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL(eTutorStatus__c,&apos;Completed&apos;),
+Amount_Pending__c&lt;&gt;0)</errorConditionFormula>
+    <errorMessage>Work Order cannot be completed as there is pending amount to be paid by Customer</errorMessage>
+</ValidationRule>

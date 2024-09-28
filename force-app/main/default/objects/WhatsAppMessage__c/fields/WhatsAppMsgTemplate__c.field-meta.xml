@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WhatsAppMsgTemplate__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>WhatsApp Msg Template</label>
+    <referenceTo>WhatsAppMsgTemplates__c</referenceTo>
+    <relationshipLabel>WhatsApp Message</relationshipLabel>
+    <relationshipName>WhatsApp_Message</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

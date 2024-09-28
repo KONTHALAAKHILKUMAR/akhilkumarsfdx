@@ -1,0 +1,93 @@
+<template>
+    <div class="mainContainer">
+        <div class="d-flex">            
+            <div class="go-back" onclick={handleGoBack}>
+                 <img src={goBackArrowIcon} alt="Go Back" style="width: 20px; height: 20px; margin-right: 5px;" />
+                 <a href="javascript:void(0);" style="color: #000; margin-left: -9px;font-family: Poppins;font-size: 14px;font-style: normal;font-weight: 400;line-height: normal;">Go Back</a>
+            </div>
+            <div class="align-buttons">
+                <div class="program-selected">
+                    <p id="selected-program">Program Name: {selectedProgram}</p>
+                </div>
+                <div class="university-info" style="margin-left: 10px;">
+                    <p>University Name / ID: KLC Tech College</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-wrap filter-section" style="margin-top: -18px; padding-bottom: 17px;">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-5 studentNameInputBox">
+                <lightning-input label="Student Name" value={searchInput} onchange={handleSearchInputChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-5 programComboBox">
+                <lightning-combobox
+                    name="program"
+                    label="Program Name"
+                    value={selectedProgram}
+                    placeholder="Select Program"
+                    options={programOptions}
+                    onchange={handleProgramChange}>
+                </lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-5 searchButton">
+                <lightning-button label="Search" variant="brand" onclick={handleSearch}></lightning-button>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-5" style="width: 116px;margin-left: 14px;margin-right: 10px;">
+                <lightning-combobox
+                    name="years"                    
+                    value={selectedYear}
+                    placeholder="Select Year"
+                    options={yearOptions}
+                    onchange={handleYearChange}>
+                </lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-5"  style=" width: 100px;">
+                <lightning-combobox
+                    name="semister"                    
+                    value={selectedSemister}
+                    placeholder="SelectedSemister"
+                    options={semisterOptions}
+                    onchange={handleSemisterChange}>
+                </lightning-combobox>
+            </div>
+        </div>
+        
+
+        <div class="slds-modal__content " style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover" aria-label="Example table of Opportunities with vertical borders">
+                <thead>
+                    <tr class="slds-line-height_reset table-header">
+                        <th scope="col" style="background-color: #FFFECE;">S. No</th>
+                        <th scope="col" style="background-color: #FFFECE;">Name of Students</th>
+                        <th scope="col" style="background-color: #FFFECE;">Semester</th>
+                        <th scope="col" style="background-color: #FFFECE;">Year</th>
+                        <th scope="col" style="background-color: #FFFECE;">Grade</th>
+                        <th scope="col" style="background-color: #FFFECE;">Skills</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={visibleRecords} for:item="student">
+                        <tr key={student.id}>
+                            <td>{student.sNo}</td>
+                            <td><a href="#" onclick={handleStudentClick} data-name={student.id}>{student.name}</a></td>
+                            <td>{student.semester}</td>
+                            <td>{student.year}</td>
+                            <td>{student.grade}</td>
+                            <td>
+                                <template for:each={student.skills} for:item="skill">
+                                    <span key={skill} class="slds-badge slds-theme_success">{skill}</span>
+                                </template>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+        <c-pagination 
+                record-size="7" 
+                rwecords={allRecords} 
+                onupdate={handleUpdate}>
+            </c-pagination>
+    </div>
+</template>

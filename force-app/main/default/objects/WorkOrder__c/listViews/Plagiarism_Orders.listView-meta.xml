@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Plagiarism_Orders</fullName>
+    <columns>NAME</columns>
+    <columns>eTutorWorkOrderID__c</columns>
+    <columns>eTutorStatus__c</columns>
+    <columns>MainHandler__c</columns>
+    <columns>Plagiarism_more_than_20__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>WorkOrder__c.PlagiarismCheck</value>
+    </filters>
+    <label>Plagiarism Orders</label>
+</ListView>

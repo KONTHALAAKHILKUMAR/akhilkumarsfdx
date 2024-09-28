@@ -1,0 +1,107 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+    </template>
+    
+
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-m-left_x-small slds-size_5-of-12">
+            <lightning-combobox 
+                name="University" 
+                label="University :" 
+                value={selectedUniversity} 
+                variant="label-inline" 
+                options={universities} 
+                onchange={handleUniversityChange}>
+            </lightning-combobox>
+        </div>
+        <div class="slds-col slds-m-left_x-small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+            <lightning-combobox 
+                name="Year" 
+                label="Year :" 
+                value={selectedYear} 
+                variant="label-inline" 
+                options={years} 
+                onchange={handleYearChange}>
+            </lightning-combobox> 
+        </div>
+        <div class="slds-col slds-m-left_x-small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+            <lightning-combobox 
+            name="Program" 
+            label="Program :" 
+            value={selectedProgram} 
+            variant="label-inline" 
+            options={programs} 
+            onchange={handleProgramChange}>
+        </lightning-combobox>      
+        </div>
+        <div class="slds-col slds-m-left_x-small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+            <lightning-combobox 
+                name="Course" 
+                label="Course :" 
+                value={selectedCourse} 
+                variant="label-inline" 
+                options={courseOptions} 
+                onchange={handleCourseChange}>
+            </lightning-combobox>
+        </div>
+        <div class="slds-col slds-m-left_x-small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+            <lightning-button
+                variant="brand"
+                label="Search"
+                title="Search"
+                class="slds-m-left_x-small"
+                onclick={handleSearch}>
+            </lightning-button>
+        </div>
+    </div>
+    <template if:true={showModuleWiseChart}>
+        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+            <p style="margin-top: 5px;"><strong>Total Students : </strong> {totalStudents}</p>
+            <p style="margin-top: 5px;"><strong>Selected Year's Student Count : </strong> {selectedYrStudentCount}</p>
+            <p style="margin-top: 5px;"><strong>Selected Program's Student Count : </strong> {selectedPrStudentCount}</p>
+        </div>
+    </template>
+    
+    
+    <template if:true={showModuleWiseChart}>
+        <div class="slds-m-top_medium slds-grid slds-wrap">
+            <div class="slds-col  slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                <canvas lwc:dom="manual" class="chart as-per-the-schedule"></canvas>
+            </div>
+            <div class="slds-col  slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2"> 
+                <canvas lwc:dom="manual" class="chart ahead-of-schedule"></canvas>
+            </div>
+            
+        </div>
+        <div class="slds-m-top_medium slds-grid slds-wrap">
+            <div class="slds-col  slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                <canvas lwc:dom="manual" class="chart lagging-behind"></canvas>
+            </div>
+            <div class="slds-col  slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                <canvas lwc:dom="manual" class="chart module-progress"></canvas>
+            </div>
+            
+        </div>
+        <div class="slds-m-top_medium slds-grid slds-wrap">
+            
+            <div class="slds-col  slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                <canvas lwc:dom="manual" class="chart course-progress"></canvas>
+            </div>
+            <div class="slds-col  slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                <canvas lwc:dom="manual" class="chart project"></canvas>
+            </div>
+        </div>
+    </template>
+    
+
+    <template if:true={showStudentLevelChart}>
+        <c-student-level-dashboard 
+            selected-module={selectedModule}
+            selected-chart={selectedChart}
+            student-details={filteredStudentData} 
+            onclosestudentchart={handleStudentListClose}>
+        </c-student-level-dashboard>
+    </template>
+    
+</template>

@@ -1,0 +1,77 @@
+<template>
+    <div class="body">
+        <!-- Summary Boxes -->
+        <div class="summary-container">
+            <div class="summary-box" style="border-color: #F1788D;">
+                <p>Total Universities</p>
+                <h2>100</h2>
+            </div>
+            <div class="summary-box" style="border-color: #9567E8;">
+                <p>Students</p>
+                <h2>1200</h2>
+            </div>
+            <div class="summary-box" style="border-color: #00A2B3;">
+                <p>Mentors</p>
+                <h2>48</h2> 
+            </div>
+            <div class="summary-box" style="border-color: #95B70B;">
+                <p>Programs</p>
+                <h2>50</h2>
+            </div>
+            <div class="summary-box" style="border-color:#CF3E53;">
+                <p>Courses</p>
+                <h2>300</h2>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="slds-p-horizontal_small slds-grid slds-grid_vertical-align-center">
+            <!-- Search section -->
+            <div class="slds-col slds-m-bottom_small">
+                <lightning-input label="University Name" type="text"  onchange={handleSearch}
+                 style=" flex: 1; padding: 10px; border-radius: 5px;"></lightning-input>
+            </div>
+            <div class="slds-col slds-m-bottom_small slds-text-align_right">
+                <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+            </div>
+        </div>
+        <!-- Table Data -->
+        <table class="table table-bordered table-hover">
+            <thead class="table-header">
+                <tr>
+                        <th scope="col">Serial</th>
+                        <th scope="col">Name of University</th>
+                        <th scope="col">No. Programs offered</th>
+                        <th scope="col">Students</th>
+                        <th scope="col">Mentors</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={visibleCollegeData} for:item="college">
+                    <tr key={college.id}>
+                        <td>{college.serial}</td>
+                        <td><a href="javascript:void(0)">{college.name}</a></td>
+                        <td>{college.programs}</td>
+                        <td>{college.students}</td>
+                        <td>{college.mentors}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-wrapper slds-grid slds-grid_align-spread slds-p-around_small" style="padding-left: 30px; border:none; background-color:transparent">
+            <p>Page {currentPage}</p>
+            <div class="slds-grid">
+                <lightning-icon icon-name="utility:chevronleft" alternative-text="Previous" onclick={handlePrevious}
+                    class="icon-only slds-m-right_small" style="cursor: pointer; color: black;">
+                </lightning-icon>
+                <p style="margin: 5px 0px;">{currentPage}.... {totalPages}</p>
+                <lightning-icon icon-name="utility:chevronright" alternative-text="Next" onclick={handleNext}
+                    class="icon-only slds-m-left_small" style="cursor: pointer; color: black;">
+                </lightning-icon>
+            </div>
+        </div>
+        
+    </div>
+</template>

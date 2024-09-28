@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SKTaxationConsentFormURL__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;https://dev-cherishtechnologies.cs96.force.com/StudentAcceptanceForm?studentID=&quot;&amp;Id , &quot;Taxation Consent Form&quot; )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Taxation Consent Form URL</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

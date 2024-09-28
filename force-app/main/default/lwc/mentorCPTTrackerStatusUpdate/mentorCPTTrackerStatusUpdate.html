@@ -1,0 +1,81 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading..." variant="brand">
+        </lightning-spinner>
+    </template>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Status Update</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-select
+                            name="moduleNumber"
+                            label="Module No : "
+                            value={selectedModuleNumbers}
+                            placeholder="Select Module"
+                            options={formattedModuleOptions}
+                            onchange={handleModuleChange}
+                            multiple
+                            size="5">
+                        </lightning-select>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-combobox 
+                            name="status"
+                            label="Status : "
+                            value={status}
+                            placeholder="Select Status"
+                            options={statusOptions}
+                            onchange={handleStatusChange}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+                <div class="slds-grid slds-gutters slds-p-around_medium">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input
+                            type="date"
+                            name="completedDate"
+                            label="Completed Date"
+                            onchange={handleDateChange}
+                            value={completedDate}
+                            disabled={isCompletionDateDisabled}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input
+                            type="text"
+                            name="moduleGrade"
+                            label="Module Grade"
+                            onchange={handleModuleGradeChange}
+                            value={moduleGrade}> 
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-grid slds-gutters slds-p-around_medium">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-textarea
+                            style="width: 200px;"
+                            label="Module Feedback : "
+                            type="text"
+                            name="courseFeedback"                                
+                            value={moduleFeedback}
+                            onchange={handleModuleFeedbackChange}>
+                        </lightning-textarea>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={handleCloseModal}>Cancel</button>
+                <button 
+                 class="slds-button slds-button_brand" 
+                 onclick={handleUpdate} 
+                 disabled={isUpdateDisabled}>Update</button>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <div class="module-path">
+        <h2>{course.name} Modules</h2>
+        <div class="modules">
+            <template for:each={modules} for:item="module">
+                <div key={module.id} class="module">
+                    <div class="module-circle" style="background-color: {module.color}">{module.id}</div>
+                    <div class="module-status">{module.status}</div>
+                </div>
+            </template>
+        </div>
+        <div class="interaction-hint">Click on a module to view details</div>
+        <button class="close-button" onclick={handleClose}>Close</button>
+    </div>
+</template>

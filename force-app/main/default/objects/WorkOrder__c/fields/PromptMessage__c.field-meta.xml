@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PromptMessage__c</fullName>
+    <label>Prompt Message</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>We are checking the document for plagiarism. Please wait for some time.</fullName>
+                <default>false</default>
+                <label>We are checking the document for plagiarism. Please wait for some time.</label>
+            </value>
+            <value>
+                <fullName>You will receive the update on plagiarism check by evening.</fullName>
+                <default>false</default>
+                <label>You will receive the update on plagiarism check by evening.</label>
+            </value>
+            <value>
+                <fullName>We are working on your document to remove plagiarism.</fullName>
+                <default>false</default>
+                <label>We are working on your document to remove plagiarism.</label>
+            </value>
+            <value>
+                <fullName>Please provide us the requirements of the professor.</fullName>
+                <default>false</default>
+                <label>Please provide us the requirements of the professor.</label>
+            </value>
+            <value>
+                <fullName>Please pay the amount so that we can deliver the work to you as soon as possible.</fullName>
+                <default>false</default>
+                <label>Please pay the amount so that we can deliver the work to you as soon as possible.</label>
+            </value>
+            <value>
+                <fullName>Work delivered.</fullName>
+                <default>false</default>
+                <label>Work delivered.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

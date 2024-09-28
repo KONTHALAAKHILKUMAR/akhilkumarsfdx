@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Pending_price_check</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL(ActualStatus__c,&apos;Pending with customer for Initial payment&apos;),
+ISPICKVAL(eTutorStatus__c,&apos;Payment Pending&apos;),
+ISNULL(Price__c))</errorConditionFormula>
+    <errorDisplayField>Price__c</errorDisplayField>
+    <errorMessage>Please update the price of the work order</errorMessage>
+</ValidationRule>

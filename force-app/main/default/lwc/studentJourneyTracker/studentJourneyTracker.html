@@ -1,0 +1,84 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+    </template>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-size_1-of-3" style=" margin-top: 20px;">
+            <lightning-combobox
+                name="University"
+                label="University :"
+                value={selectedUniversity}
+                variant="label-inline"
+                options={universities}
+                onchange={handleUniversityChange}>
+            </lightning-combobox>
+        </div>
+        <div class="slds-size_1-of-3" style="margin-left: 25px; ">
+            <lightning-record-picker
+                label="Student : "
+                name="Student"
+                placeholder="Search Student..."
+                object-api-name="Contact"
+                matching-info={matchingInfo}
+                display-info={displayInfo}
+                onchange={handleStudentSelect}
+                filter={filterCriteria}>
+            </lightning-record-picker>
+        </div>
+        <div class="slds-size_2-of-3" style="margin-bottom: 30px;">
+            <lightning-button
+                variant="brand"
+                label="Search"
+                title="Search"
+                class="slds-m-left_x-small"
+                onclick={handleSearch}>
+            </lightning-button>
+        </div>
+    </div>
+
+    <template if:true={studentData}>
+        <div class="custom-card" style="border-style: groove;max-width: 500px;height: 225px; margin: auto auto">
+            <div class="custom-card-header">
+                <h2 style="text-align: center;font-size: 16px;padding: 7px 0px;">
+                    Student Details
+                </h2>
+            </div>
+            <hr style="margin: 0px auto;">
+            <div class="custom-card-body slds-p-horizontal_medium" style="padding: 16px 20px;">
+                <p style=" padding: 2px 2px; line-height: 20px;">
+                    <strong>Student Name:  </strong> 
+                    {studentData.Student__r.Name}
+                </p>
+                <p style=" padding: 2px 2px; line-height: 20px;">
+                    <strong>College Name:  </strong> 
+                    {studentData.Student__r.Account.Name}
+                </p>
+                <p style=" padding: 2px 2px; line-height: 20px;">
+                    <strong>APSCHE :  </strong> 
+                    {studentData.Student__r.APSCHE_Name__c}
+                </p>
+                <p style=" padding: 2px 2px; line-height: 20px;">
+                    <strong>Program Name:  </strong> 
+                    {studentData.Program__r.Name}
+                </p>
+                <div>
+                    <lightning-button
+                        style="float: right;"
+                        variant="brand"
+                        label="Student Progress"
+                        title="Student Progress"
+                        class="slds-m-top_small"
+                        onclick={handleStudentProgress}>
+                    </lightning-button>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- <template if:true={showStudentProgress}>
+        <c-student-journey-tree 
+        selected-student={selectedStudent}
+        selected-university={selectedUniversity}
+        student-data={studentData}>
+    </c-student-journey-tree>
+    </template> -->
+</template>

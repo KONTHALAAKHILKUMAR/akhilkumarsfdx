@@ -1,0 +1,93 @@
+<template>
+    <div class="MainDiv" style="margin: 0px 72px 0px 79px;">
+        <div>
+            <div style="  display: flex;justify-content: space-between;padding: 34px 0px 20px 0px;">
+                <div style="padding: 8px 18px;border-radius: 4px;border: 1px solid #F1788D;background: #FFF; width: 209px;height: 89px;flex-shrink: 0;">
+                    <div class="slds-form-element" >
+                        <label class="slds-form-element__label" for="text-input-id-46">Total Universities</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-46" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                        </div>
+                </div>
+                <div  style="padding: 8px 18px;border-radius: 4px;border: 1px solid #9567E8;background: #FFF;width: 209px;height: 89px;">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-46">Students</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-47" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                        </div>
+                </div>
+                <div style="padding: 8px 18px;border-radius: 4px;border: 1px solid #00A2B3;background: #FFF;width: 209px;height: 89px;">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-46">Mentors</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-48" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                        </div>
+                </div>
+                <div  style="padding: 8px 18px;border-radius: 4px;border: 1px solid #95B70B;background: #FFF;width: 209px;height: 89px;">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-46">Programs</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-49" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                        </div>
+                </div>
+                <div style="padding: 8px 18px;border-radius: 4px;border: 1px solid #CF3E53;background: #FFF;width: 209px;height: 89px;">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-46">Courses</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-50" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                        </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div style="  display: flex;  justify-content: space-between; ">
+            <div style="width: 300px;height: 34px; border-radius: 4px;background: #FFF;" >
+                <lightning-input type="text" label="University Name"></lightning-input>
+            </div>
+            
+            <div class="slds-col" style="padding: 0px 0px 0px 20px;border-radius: 4px;margin-top: 24px;color: #FFF;font-family: Montserrat;font-size: 14px;font-style: normal;font-weight: 500;line-height: normal;">
+                <button class="slds-button slds-button_brand">Search</button>
+            </div>
+        </div>
+        
+
+        <div class="slds-modal__content " style="max-height: 400px; overflow-y: auto;overflow-x: auto;">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover" aria-label="Example table of Opportunities with vertical borders">
+              <thead>
+                  <tr class="slds-line-height_reset table-header">
+                      <th scope="col" style=" background-color: #FFFECE;">S. No</th>
+                      <th scope="col" style=" background-color: #FFFECE;">Name of Students</th>
+                      <th scope="col" style=" background-color: #FFFECE;">Semester</th>
+                      <th scope="col" style=" background-color: #FFFECE;">Year</th>
+                      <th scope="col" style=" background-color: #FFFECE;">Grade</th>
+                      <th scope="col" style=" background-color: #FFFECE;">Skills</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <template for:each={filteredStudents} for:item="student">
+                      <tr key={student.id}>
+                          <td>{student.sNo}</td>
+                          <td>{student.name}</td>
+                          <td>{student.semester}</td>
+                          <td>{student.year}</td>
+                          <td>{student.grade}</td>
+                          <td>
+                              <template for:each={student.skills} for:item="skill">
+                                  <span key={skill} class="slds-badge slds-theme_success">{skill}</span>
+                              </template>
+                          </td>
+                      </tr>
+                  </template>
+              </tbody>
+          </table>
+       
+          </div>
+
+    </div>
+</template>

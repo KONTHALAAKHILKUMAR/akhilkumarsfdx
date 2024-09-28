@@ -1,0 +1,138 @@
+<template>
+    <div class="slds-scrollable_x slds-scrollable_y slds-card slds-m-top_large">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+        </template>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds slds-table_col-bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Sr No.">Sr No.</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Student Name">Student Name</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="University">University</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="APSCHE">APSCHE</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Batch Number">Batch Number</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Course Name">Course Name</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Total no of Modules">Total Modules</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="No of modules completed">Modules Completed</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Modules InProgress">Modules InProgress</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Project">Project Status</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Comments">Comments</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Course Feedback">Course Feedback</div>
+                    </th>
+                    <th class="heading" scope="col">
+                        <div class="slds-truncate" title="Edit">Edit</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={resourceList} for:item="record">
+                    <tr key={record.serialNumber}>
+                        <td>
+                            <div class="slds-truncate" title={record.serialNumber}>{record.serialNumber}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title={record.studentName}>{record.studentName}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title={record.collegeName}>{record.collegeName}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title={record.apsche}>{record.apsche}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title={record.batchNumber}>{record.batchNumber}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title={record.courseName}>{record.courseName}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title={record.totalModules}>{record.totalModules}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title={record.modulesCompleted}>{record.modulesCompleted}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title={record.modulesInProgress}>{record.modulesInProgress}</div>
+                        </td>
+                        <td>
+                            <lightning-combobox 
+                                name="project"
+                                value={record.project}
+                                placeholder="Select Project"
+                                options={projectOptions}
+                                onchange={handleProjectChange}
+                                data-id={record.serialNumber}>
+                            </lightning-combobox>
+                        </td>
+                        <td>
+                            <lightning-textarea
+                               style="width: 200px;"
+                                type="text"
+                                name="comments"
+                                variant="label-hidden"
+                                value={record.comments}
+                                onchange={handleCommentsChange}
+                                data-id={record.serialNumber}>
+                            </lightning-textarea>
+                        </td>
+                        <td>
+                            <lightning-textarea
+                               style="width: 200px;"
+                                type="text"
+                                name="courseFeedback"
+                                variant="label-hidden"
+                                value={record.courseFeedback}
+                                onchange={handlecourseFeedbackChange}
+                                data-id={record.serialNumber}>
+                            </lightning-textarea>
+                        </td>
+                        <td data-label="Status Edit">
+                            <div class="slds-truncate" title={record.Id}>
+                                <lightning-button-icon 
+                                    icon-name="utility:edit" 
+                                    alternative-text="Status Update" 
+                                    title="Edit Module Status" 
+                                    data-id={record.Id} 
+                                    data-total-modules={record.totalModules}
+                                    onclick={handleEditClick}>
+                                </lightning-button-icon>
+                            </div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        <template if:true={isModalOpen}>
+            <c-mentor-c-p-t-tracker-status-update  
+            record-id={recordId} 
+            total-modules={totalModules} 
+            module-options={moduleOptions} 
+            onclosemodal={handleCloseModal} 
+            onstatusupdate={handleStatusUpdate}>
+        </c-mentor-c-p-t-tracker-status-update>
+        </template>
+    </div>
+</template>

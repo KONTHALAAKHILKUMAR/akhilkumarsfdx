@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>eTutorStatus__c</fullName>
+    <label>eTutor Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Work Order Received</fullName>
+                <default>true</default>
+                <label>Work Order Received</label>
+            </value>
+            <value>
+                <fullName>Payment Pending</fullName>
+                <default>false</default>
+                <label>Payment Pending</label>
+            </value>
+            <value>
+                <fullName>Work in Progress</fullName>
+                <default>false</default>
+                <label>Work in Progress</label>
+            </value>
+            <value>
+                <fullName>Additional information Required</fullName>
+                <default>false</default>
+                <label>Additional information Required</label>
+            </value>
+            <value>
+                <fullName>Plagiarism Check Report Completed</fullName>
+                <default>false</default>
+                <label>Plagiarism Check Report Completed</label>
+            </value>
+            <value>
+                <fullName>Work completed. Payment Pending</fullName>
+                <default>false</default>
+                <label>Work completed. Payment Pending</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Plagiarism Free Report Completed</fullName>
+                <default>false</default>
+                <label>Plagiarism Free Report Completed</label>
+            </value>
+            <value>
+                <fullName>Declined</fullName>
+                <default>false</default>
+                <label>Declined</label>
+            </value>
+            <value>
+                <fullName>Plagiarism Free Report Payment Pending</fullName>
+                <default>false</default>
+                <label>Plagiarism Free Report Payment Pending</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

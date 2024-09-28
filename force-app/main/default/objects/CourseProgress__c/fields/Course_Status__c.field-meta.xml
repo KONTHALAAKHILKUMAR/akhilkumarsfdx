@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course_Status__c</fullName>
+    <label>Course Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ahead of Schedule</fullName>
+                <default>false</default>
+                <label>Ahead of Schedule</label>
+            </value>
+            <value>
+                <fullName>As Per Schedule</fullName>
+                <default>false</default>
+                <label>As Per Schedule</label>
+            </value>
+            <value>
+                <fullName>Lagging Behind</fullName>
+                <default>false</default>
+                <label>Lagging Behind</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

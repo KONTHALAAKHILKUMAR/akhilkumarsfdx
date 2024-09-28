@@ -1,0 +1,129 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+        </template>
+        <div class="slds-col slds-size_1-of-1" style="display: flex; margin-left:5px;">
+            <p style="color: grey;">CRT: </p>
+            <lightning-input 
+             style="margin-left: 10px;"
+                type="checkbox" 
+                name="CRT" 
+                label="CRT :" 
+                variant="label-hidden"
+                checked={selectedCRTValue} 
+                onchange={handleCRTChange}>
+            </lightning-input>  
+        </div>
+        
+        <div class="slds-col  slds-size_5-of-12">
+            <lightning-combobox 
+                name="Mentor" 
+                label="Mentor :" 
+                value={selectedMentor} 
+                placeholder="All"
+                variant="label-inline" 
+                options={mentors} 
+                onchange={handleMentorChange}>
+            </lightning-combobox>  
+        </div>
+        <div class="slds-col slds-size_5-of-12">
+            <lightning-combobox 
+                name="University" 
+                label="College/University :" 
+                value={selectedUniversity} 
+                variant="label-inline" 
+                options={universities} 
+                onchange={handleUniversityChange}>
+            </lightning-combobox>
+        </div>
+        <template if:true={showApscheFilter}>
+            <div class="slds-col  slds-size_5-of-12">            
+                <lightning-combobox 
+                    name="APSCHE" 
+                    label="APSCHE :" 
+                    value={selectedAPSCHE} 
+                    placeholder="Select APSCHE.."
+                    variant="label-inline" 
+                    options={apscheOptions} 
+                    onchange={handleAPSCHEChange}>
+                </lightning-combobox>      
+           </div>
+        </template>
+        <template if:true={isCRTSelected}> 
+            <div class="slds-col  slds-size_5-of-12">
+                <lightning-combobox 
+                    name="Year" 
+                    label="Year :" 
+                    value={selectedYear} 
+                    placeholder="All"
+                    variant="label-inline" 
+                    options={years} 
+                    onchange={handleYearChange}>
+                </lightning-combobox>            
+            </div>
+           
+        </template>
+        <div class="slds-col  slds-size_5-of-12">
+            <lightning-combobox 
+            name="Program" 
+            label="Program :" 
+            value={selectedProgram} 
+            placeholder="All"
+            variant="label-inline" 
+            options={programs} 
+            onchange={handleProgramChange}>
+        </lightning-combobox>      
+        </div>
+        
+        <div class="slds-col  slds-size_5-of-12">
+            <lightning-combobox 
+                name="Course" 
+                label="Course :" 
+                value={selectedCourse} 
+                placeholder="All"
+                variant="label-inline" 
+                options={courses} 
+                onchange={handleCourseChange}>
+            </lightning-combobox>            
+        </div>
+        
+    </div>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <lightning-button 
+                variant="brand" 
+                label="Search" 
+                title="Search" 
+                class="slds-m-left_x-small"
+                onclick={handleSearch}>
+            </lightning-button>
+            <lightning-button 
+                variant="brand" 
+                label="Save" 
+                title="Save" 
+                class="slds-m-left_x-small"
+                onclick={handleSave}>
+            </lightning-button>
+        </div>
+    </div>
+    <div  style="overflow-x: auto">
+        <template if:true={isRecordAvailable}>
+            <c-mentor-c-p-t-student-list 
+            selected-c-r-t-value={selectedCRTValue}
+            resource-list={visibleRecords}
+            onsaverecords={handleUpdateRecords}
+            onstatusupdate={handleStatusUpdate}>
+        </c-mentor-c-p-t-student-list>
+        </template>
+    </div>
+    <div  style="overflow-x: auto">
+        <template if:true={isRecordAvailable}>
+            <c-pagination 
+                record-size="50" 
+                records={allRecords} 
+                onupdate={handleUpdate}>
+            </c-pagination>
+        </template>
+    </div> 
+</template>

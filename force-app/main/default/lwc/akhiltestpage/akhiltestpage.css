@@ -1,0 +1,38 @@
+.slds-box {
+    padding: 10px;
+    background-color: white;
+    text-align: center;
+}
+
+.active {
+    border: 1px solid rgb(179, 91, 91);
+    background-color: #ddd;
+}
+
+.slds-table thead th {
+    background-color: #FFFECE !important;
+}
+
+.slds-table tbody td {
+    padding: 10px;
+    text-align: center;
+}
+.boxNumber{
+    color: #272727;
+    font-family: Poppins;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16.073px;
+    letter-spacing: 0.008px;
+}
+.boxText{
+    color: #414141;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16.073px;
+    letter-spacing: 0.008px;
+        padding-bottom: 16px;
+}

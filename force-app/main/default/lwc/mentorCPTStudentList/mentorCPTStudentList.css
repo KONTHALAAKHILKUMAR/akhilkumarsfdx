@@ -1,0 +1,24 @@
+.heading {
+    background-color: #0870B4;
+    color: white;
+}
+.commentAvailable{
+    background-color: #d5e05de7;
+}
+
+.slds-table thead th {
+    position: sticky;
+    top: 0;
+    background: #0870B4;
+    color: white;
+    z-index: 10; 
+  }
+  
+   .slds-scrollable_y, .slds-scrollable_x {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 400px; 
+  }
+  .slds-table th, .slds-table td {
+    background: #fff; 
+  }

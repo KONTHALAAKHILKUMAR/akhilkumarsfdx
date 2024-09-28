@@ -1,0 +1,91 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+    </template>
+
+    <template if:false={showProgramWiseChart}>
+        <div class="slds-grid slds-wrap">        
+            <div class="slds-col slds-m-left_x-small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1" style="display: flex;margin-left: 12px;">
+                <p style="color: grey;">CRT: </p>
+                <lightning-input 
+                 style="margin-left: 10px;"
+                    type="checkbox" 
+                    name="CRT" 
+                    label="CRT :" 
+                    variant="label-hidden"
+                    checked={selectedCRTValue} 
+                    onchange={handleCRTChange}>
+                </lightning-input>  
+            </div>
+            <div class="slds-col slds-m-left_x-small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12" >
+                <lightning-combobox 
+                    name="Mentor" 
+                    label="Mentor :" 
+                    value={selectedMentor} 
+                    placeholder="All"
+                    variant="label-inline" 
+                    options={mentors} 
+                    onchange={handleMentorChange}>
+                </lightning-combobox>  
+            </div>
+            <div class="slds-col slds-m-left_x-small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                <lightning-combobox
+                    name="University"
+                    label="University :"
+                    value={selectedUniversity}
+                    variant="label-inline"
+                    options={universities}
+                    onchange={handleUniversityChange}>
+                </lightning-combobox>
+            </div>
+            <template if:true={showApscheFilter}>
+                <div class="slds-col slds-m-left_x-small slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                    <lightning-combobox
+                        name="APSCHE"
+                        label="APSCHE :"
+                        value={selectedApsche}
+                        variant="label-inline"
+                        options={apscheOptions}
+                        onchange={handleAPSCHEChange}>
+                    </lightning-combobox>
+                </div>
+            </template>          
+        </div>
+        
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" style="margin-top: 4px;">
+                <lightning-button
+                    variant="brand"
+                    label="Search"
+                    title="Search"
+                    class="slds-m-left_x-small"
+                    onclick={handleSearch}>
+                </lightning-button>
+            </div>
+        </div>
+        <template if:true={showTotalCount}>
+            <div>
+                <p style="float: right; margin-top: 5px;"><strong>Total Count : </strong> {totalStudents}</p>
+            </div>
+        </template>
+        
+    </template>
+    
+    <template if:true={showUniversityChart}>
+        <div>
+            <canvas lwc:dom="manual" class="chart" ></canvas>
+        </div>
+    </template>
+    <template if:true={showProgramWiseChart}>
+        <div>
+            <c-program-level-dashboard 
+             selected-c-r-t-value={selectedCRTValue}
+             selected-mentor={selectedMentor}
+             selected-university={selectedUniversity} 
+             selected-u-d-label={selectedUDLabel}
+             selected-apsche={selectedApsche}
+             oncloseprogramchart={handleProgramChartClose}>
+            </c-program-level-dashboard>
+        </div>
+    </template>
+</template>

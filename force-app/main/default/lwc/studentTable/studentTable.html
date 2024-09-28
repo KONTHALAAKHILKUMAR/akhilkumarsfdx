@@ -1,0 +1,151 @@
+<template>
+    <div class="mainContainer">
+        
+        <!-- Go Back and University Information -->
+        <div class="d-flex">            
+            <div class="go-back" onclick={handleGoBack}>
+                <img src={goBackArrowIcon} alt="Go Back" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <a href="javascript:void(0);" style="color: #000; margin-left: -9px; font-family: Poppins; font-size: 14px; font-weight: 400;">Go Back</a>
+            </div>
+                        
+            <div class="align-buttons">
+                <div class="program-selected">
+                    <p id="selected-program">Program Name: {selectedProgram}</p>
+                </div>
+                <div class="university-info" style="margin-left: 10px;">
+                    <p>University Name / ID: KLC Tech College</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section (outside the table) -->
+        <div class="slds-grid slds-wrap filter-section" style="align-items: center; gap: 10px;">
+            
+            <!-- Student Name Input -->
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-6 studentNameInputBox" style="flex-grow: 1;">
+                <lightning-input label="Student Name" value={searchKey} onchange={handleSearch} style="width: 100%;"></lightning-input>
+            </div>
+
+            <!-- Program Name Dropdown -->
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-6 programComboBox" style="flex-grow: 1;">
+                <lightning-combobox
+                    name="program"
+                    label="Program Name"
+                    value={selectedProgram}
+                    placeholder="Select Program"
+                    options={programOptions}
+                    onchange={handleProgramChange}
+                    style="width: 100%;">
+                </lightning-combobox>
+            </div>
+
+            <!-- Search Button -->
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-6 searchButton" style="flex-grow: 0; text-align: center;">
+                <lightning-button label="Search" variant="brand" onclick={handleSearch} style="width: 100px; height: 40px;"></lightning-button>
+            </div>
+
+            <!-- Year and Semester Dropdowns -->
+            <div class="slds-grid slds-wrap filter-section" style="justify-content: flex-end; align-items: center; gap: 10px; flex-grow: 1;">
+                
+                <!-- Year Dropdown -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-6 year-dropdown" style="width: 115px;">
+                    <lightning-combobox
+                        name="year"
+                        value={selectedYear}
+                        placeholder="ALL"
+                        options={yearOptions}
+                        onchange={handleYearChange}
+                        style="width: 100%;"
+                        >
+                    </lightning-combobox>
+                </div>
+                
+                <!-- Semester Dropdown -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-6 semester-dropdown" style="width: 115px;">
+                    <lightning-combobox
+                        name="semester"
+                        value={selectedSemester}
+                        placeholder="All Semester"
+                        options={semesterOptions}
+                        onchange={handleSemesterChange}
+                        style="width: 100%;">
+                    </lightning-combobox>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Table -->
+        <div class="slds-modal__content" style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover">
+                <thead>
+                    <tr class="slds-line-height_reset table-header">
+                        <th scope="col" style=" background-color: #FFFECE;">S. No</th>
+                        <th scope="col" style=" background-color: #FFFECE;">Name of Students</th>
+                        <th scope="col" style=" background-color: #FFFECE;">Semester</th>
+                        <th scope="col" style=" background-color: #FFFECE;">Year</th>
+                        <th scope="col" style=" background-color: #FFFECE;">Grade</th>
+                        <th scope="col" style=" background-color: #FFFECE;">Skills</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={filteredStudents} for:item="student">
+                        <tr key={student.id}>
+                            <td>{student.sNo}</td>                       
+                            <td><a role="button" onclick={handleStudentClick} data-name={student.id}>{student.name}</a></td>
+
+                            <td>{student.semester}</td>
+                            <td>{student.year}</td>
+                            <td>{student.grade}</td>
+                            <td>
+                                <template for:each={student.skills} for:item="skill">
+                                    <span key={skill} class="badge-success slds-badge">{skill}</span>
+                                </template>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <!-- <div class="pagination-wrapper">
+            <lightning-button label="Previous" variant="neutral" onclick={handlePrevious} disabled={isFirstPage}></lightning-button>
+            <span>Page {currentPage}</span>
+            <lightning-button label="Next" variant="neutral" onclick={handleNext} disabled={isLastPage}></lightning-button>
+        </div> 
+        <div class="slds-grid pagination-wrapper" style="justify-content: space-between; padding-top: 15px;">
+            <div class="slds-col slds-size_1-of-3">
+                <span>Page {currentPage}</span>
+            </div>
+            <div class="slds-col slds-size_1-of-3 pagination-controls" style="text-align: right;">
+                <lightning-button-icon icon-name="utility:chevronleft" alternative-text="Previous" variant="bare" onclick={handlePrevious} disabled={isFirstPage}></lightning-button-icon>
+                <span>{currentPage}</span>
+                <lightning-button-icon icon-name="utility:chevronright" alternative-text="Next" variant="bare" onclick={handleNext} disabled={isLastPage}></lightning-button-icon>
+            </div>
+        </div> -->
+    <div class="pagination-wrapper">
+    <!-- Page number on the left -->
+    <div class="slds-col slds-size_1-of-3">
+        <span>Page {currentPage}</span>
+    </div>
+
+    <!-- Chevron buttons and page numbers on the right -->
+    <div class="slds-col slds-size_1-of-3 pagination-controls" style="text-align: right;">
+        <!-- Chevron Left Button -->
+        <lightning-button-icon icon-name="utility:chevronleft" alternative-text="Previous" variant="bare" onclick={handlePreviousPage} disabled={isFirstPage}></lightning-button-icon>
+
+        <!-- Pagination numbers with ellipsis -->
+        <template for:each={pageList} for:item="page">
+            <span key={page} class="pagination-item" data-page={page} onclick={handlePageClick}>
+                {page}
+            </span>
+        </template>
+
+        <!-- Chevron Right Button -->
+        <lightning-button-icon icon-name="utility:chevronright" alternative-text="Next" variant="bare" onclick={handleNextPage} disabled={isLastPage}></lightning-button-icon>
+    </div>
+</div>
+
+        
+    </div>
+</template>

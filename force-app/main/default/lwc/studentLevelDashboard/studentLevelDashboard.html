@@ -1,0 +1,123 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+    </template>
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_large">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Student Data</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" style="max-height: 400px; overflow-y: auto;overflow-x: auto;">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover" aria-label="Example table of Opportunities with vertical borders">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                    <div class="slds-truncate" title="Serial No.">S No.</div>
+                                </th>
+                                <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                    <div class="slds-truncate" title="Student Name">Student Name</div>
+                                </th>
+                                <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                    <div class="slds-truncate" title="Email">Email</div>
+                                </th>
+                                <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                    <div class="slds-truncate" title="Course">Course</div>
+                                </th> 
+                                <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                    <div class="slds-truncate" title="Start Date">Course Start Date</div>
+                                </th>
+                                <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                    <div class="slds-truncate" title="End Date">Course End Date</div>
+                                </th>
+                                <template if:true={showCompletionDateColumn}>
+                                    <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                        <div class="slds-truncate" title={dynamicModuleStatusHeading}>{dynamicModuleStatusHeading}</div>
+                                    </th>
+                                    <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                        <div class="slds-truncate" title={dynamicModuleCompletionDateHeading}>{dynamicModuleCompletionDateHeading}</div>
+                                    </th>
+                                    <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                        <div class="slds-truncate" title="Progress">Progress</div>
+                                    </th>
+                                </template>
+                                <template if:true={showProjectColumn}>
+                                    <th scope="col" style="background-color:#035ba1; color:#ffff ">
+                                        <div class="slds-truncate" title="Project Status">Project Status</div>
+                                    </th>
+                                </template>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={studentClasses} for:item="student" >
+                                <tr key={student.serialNumber} class={student.rowClass}>
+
+                                    <td >
+                                        <div class="slds-truncate" title={student.serialNumber}>{student.serialNumber}</div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-truncate">
+                                            <a href="javascript:void(0);" onclick={handleStudentClick} data-id={student.contactId}>{student.StudentName}</a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-truncate" title={student.StudentEmail}>{student.StudentEmail}</div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-truncate" title={student.Course}>{student.Course}</div>
+                                    </td> 
+                                    <td>
+                                        <div class="slds-truncate" title={student.StartDate}>{student.StartDate}</div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-truncate" title={student.EndDate}>{student.EndDate}</div>
+                                    </td> 
+                                    <template if:true={showCompletionDateColumn}>
+                                        <td>
+                                            <div class="slds-truncate" title={student.ModuleStatus}>{student.ModuleStatus}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <template for:each={student.ModuleCompletionDates} for:item="moduleDate">
+                                                    <div key={moduleDate.key} title={moduleDate.date}>{moduleDate.date}</div>
+                                                </template>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">
+                                                <template for:each={student.ModuleProgress} for:item="moduleProgress">
+                                                    <div key={moduleProgress.key} title={moduleProgress.progress}>{moduleProgress.progress}</div>
+                                                </template>
+                                            </div>
+                                        </td> 
+                                        
+                                    </template>
+                                    <template if:true={showProjectColumn}>
+                                        <td>
+                                            <div class="slds-truncate" title={student.project}>{student.project}</div>
+                                        </td>
+                                    </template>
+
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                    <div  style="overflow-x: auto">
+                        <template if:true={isRecordAvailable}>
+                            <c-pagination 
+                                record-size="50" 
+                                records={allRecords} 
+                                onupdate={handleUpdate}>
+                            </c-pagination>
+                        </template>
+                    </div> 
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={handleCloseModal}>Cancel</button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+    
+</template>

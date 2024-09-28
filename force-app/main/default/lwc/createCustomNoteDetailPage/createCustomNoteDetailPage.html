@@ -1,0 +1,28 @@
+<template>
+<article class="slds-card">
+<div class="slds-card__header slds-grid">
+<header class="slds-media slds-media_center slds-has-flexi-truncate">
+<div class="slds-media__figure">
+<lightning-icon icon-name="standard:note" alternative-text="note" title="note"></lightning-icon>
+
+</div>
+<div class="slds-media__body">
+<h2 class="slds-card__header-title">
+<a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+<span>Notes</span>
+</a>
+</h2>
+</div>
+<div class="slds-no-flex">
+<button class="slds-button slds-button_neutral" onclick={newNoteCreation} >New</button>
+</div>
+</header>
+</div>
+<div class="slds-card__body slds-card__body_inner">Anything can go into the card body</div>
+<footer class="slds-card__footer">
+<a class="slds-card__footer-action" href="#">View All
+<span class="slds-assistive-text">Accounts</span>
+</a>
+</footer>
+</article>
+</template>

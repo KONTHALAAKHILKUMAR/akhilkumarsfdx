@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PlagiarismCheck</fullName>
+    <active>true</active>
+    <label>Plagiarism Check</label>
+    <picklistValues>
+        <picklist>ActualStatus__c</picklist>
+        <values>
+            <fullName>Assigned to Main Handler</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initial Payment Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Main Handler Analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Main Handler review completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Main handler work review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Work order</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>No Bandwidth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending with Customer for Queires</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending with Student</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending with Team member</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending with customer for Initial payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Team member open Queries</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work delivered</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>PromptMessage__c</picklist>
+        <values>
+            <fullName>Please pay the amount so that we can deliver the work to you as soon as possible%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Please provide us the requirements of the professor%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>We are checking the document for plagiarism%2E Please wait for some time%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>We are working on your document to remove plagiarism%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work delivered%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>You will receive the update on plagiarism check by evening%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>eTutorStatus__c</picklist>
+        <values>
+            <fullName>Additional information Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plagiarism Check Report Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plagiarism Free Report Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plagiarism Free Report Payment Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work Order Received</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Work completed%2E Payment Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work in Progress</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>eTutorSyncStatus__c</picklist>
+        <values>
+            <fullName>Failed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Success</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

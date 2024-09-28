@@ -1,0 +1,49 @@
+.module-path {
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.modules {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.module {
+    text-align: center;
+}
+
+.module-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 0 auto;
+}
+
+.module-status {
+    margin-top: 5px;
+    font-size: 0.8em;
+}
+
+.interaction-hint {
+    text-align: center;
+    color: #666;
+    margin-top: 20px;
+}
+
+.close-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}

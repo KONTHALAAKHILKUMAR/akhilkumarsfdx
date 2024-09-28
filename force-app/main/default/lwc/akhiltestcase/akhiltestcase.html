@@ -1,0 +1,49 @@
+<template>
+    <!-- Summary Boxes -->
+    <div class="summary-container">
+        <div class="summary-box" style="border-color: #F1788D;">
+            <p>Total Universities</p>
+            <h2>100</h2>
+        </div>
+        <div class="summary-box" style="border-color: #9567E8;">
+            <p>Students</p>
+            <h2>1200</h2>
+        </div>
+        <div class="summary-box" style="border-color: #00A2B3;">
+            <p>Mentors</p>
+            <h2>48</h2>
+        </div>
+        <div class="summary-box" style="border-color: #95B70B;">
+            <p>Programs</p>
+            <h2>50</h2>
+        </div>
+        <div class="summary-box" style="border-color: #CF3E53;">
+            <p>Courses</p>
+            <h2>300</h2>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <label>University Name</label>
+    <div class="search-container">
+        <lightning-input label="Search" value={searchValue} onchange={handleSearchChange}></lightning-input>
+        <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+    </div>
+
+    <!-- Student Table -->
+    <lightning-datatable
+        key-field="id"
+        data={filteredRows}
+        columns={columns}
+        hide-checkbox-column="true">
+    </lightning-datatable>
+
+    <!-- Pagination Section -->
+    <div class="pagination-wrapper">
+        <p id="page">Page <span>{currentPage}</span></p>
+        <div class="pagination">
+            <lightning-button label="Prev" onclick={prevPage}></lightning-button>
+            <lightning-button label="Next" onclick={nextPage}></lightning-button>
+        </div>
+    </div>
+</template>

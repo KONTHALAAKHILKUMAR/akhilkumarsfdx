@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stay_more_than_183_days_next_year__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Will you stay in US for more than 183
+Days in next year 2021?</description>
+    <label>Stay more than 183 days next year?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

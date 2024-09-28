@@ -1,0 +1,45 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+    </template>
+    <template if:true={showProgramWiseChart}>
+     <div class="slds-grid slds-wrap">
+            <div class="slds-colslds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-2" style="margin-top: 4px;">
+                <lightning-button 
+                    style="float: right;"
+                    variant="brand"
+                    label="Close Current Chart" 
+                    title="Close ProgramWise Chart" 
+                    class="slds-m-left_x-small"
+                    onclick={handleProgramChartClose}>
+                </lightning-button>
+            </div>
+        </div>
+        <template if:true={showTotalCount}>
+            <div>
+                <p style="float: right; margin-top: 5px;"><strong>Total Count : </strong> {totalStudents}</p>
+            </div>
+        </template>
+
+    </template>
+
+
+    <template if:true={showProgramWiseChart}>
+        <div class="slds-m-top_medium">
+            <canvas lwc:dom="manual" class="chart"></canvas>
+        </div>
+    </template>
+
+    <template if:true={showModuleWiseChart}>
+        <c-module-level-dashboard 
+            selected-c-r-t-value={selectedCRTValue}
+            selected-mentor={selectedMentor}
+            selected-u-d-label={selectedUDLabel}
+            selected-university={selectedUniversity}
+            selected-batch={selectedBatch}            
+            selected-program={selectedProgram}
+            selected-apsche={selectedApsche}
+            onclosemodulechart={handleModuleChartClose}>
+        </c-module-level-dashboard>
+    </template>
+</template>

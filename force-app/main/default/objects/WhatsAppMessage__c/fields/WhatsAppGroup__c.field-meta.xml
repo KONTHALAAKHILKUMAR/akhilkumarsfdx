@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WhatsAppGroup__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>WhatsApp Group</label>
+    <referenceTo>WhatsAppGroup__c</referenceTo>
+    <relationshipLabel>WhatsApp Message</relationshipLabel>
+    <relationshipName>WhatsApp_Message</relationshipName>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,75 @@
+<template>
+    <div class="mainDiv" style=" margin: auto 50px;"> 
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1 ">
+                <div class="slds-grid slds-wrap slds-grid_align-center " style="justify-content: space-between;padding-bottom: 37px;">
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-12 slds-box" style="border: 1px solid #F1788D;width: 209px;height: 89px;">
+                        <p class="boxText">Total Universities</p>
+                        <h1 class="boxNumber" >100</h1>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-12 slds-box" style="border: 1px solid #9567E8;width: 209px;height: 89px;">
+                        <p class="boxText">Students</p>
+                        <h1 class="boxNumber">200</h1>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-12 slds-box" style="border:1px solid #00A2B3;width: 209px;height: 89px;">
+                        <p class="boxText">Mentors</p>
+                        <h1 class="boxNumber">300</h1>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-12 slds-box" style="border:1px solid #95B70B;width: 209px;height: 89px;">
+                        <p class="boxText">Programs</p>
+                        <h1 class="boxNumber">400</h1>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-12 slds-box" style="border:1px solid #CF3E53;width: 209px;height: 89px;">
+                        <p class="boxText">Courses</p>
+                        <h1 class="boxNumber">500</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="search slds-grid slds-wrap filter-section">        
+            <div class="slds-grid slds-grid_align-center" style=" padding-bottom: 20px;">
+                <lightning-input label="University Name" type="text" class="search-input" style=" width: 300px;height: 34px;"></lightning-input>
+                <lightning-button style=" margin-top: 25px;" label="Search" variant="brand" class="slds-m-left_small" onclick={handleSearch}></lightning-button>
+            </div>
+            
+        </div>
+
+        <div>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-no-row-hover" aria-label="Example table of Opportunities with vertical borders">
+                <thead>
+                    <tr class="custom" >
+                        <th  style=" text-align: center;">S.No</th>
+                        <th style=" text-align: center;">Name of University</th>
+                        <th style=" text-align: center;">No. of Programs Offered</th>
+                        <th style=" text-align: center;">Students</th>
+                        <th style=" text-align: center;">Mentors</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <template for:each={visibleRecords} for:item="item">
+
+                        <tr key={item.name}>
+                            <td>{item.rowNumber}</td>
+                            <td><a href="#" onclick={handleUniversityClick} data-name={item.name}>{item.name}</a></td>
+
+                            <td>{item.programs}</td>
+                            <td>{item.students}</td>
+                            <td>{item.mentors}</td>
+                        </tr>
+                    </template>
+                </tbody>
+
+           
+            </table>
+            <c-pagination 
+                record-size="7" 
+                records={allRecords} 
+                onupdate={handleUpdate}>
+            </c-pagination>
+        </div>
+         
+    </div>
+    
+</template>

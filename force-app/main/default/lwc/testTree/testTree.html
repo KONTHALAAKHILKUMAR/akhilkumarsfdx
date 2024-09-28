@@ -1,0 +1,58 @@
+<template>
+    <div class="slds-grid slds-wrap slds-m-top_medium slds-m-bottom_medium">
+        <div class="slds-col slds-size_1-of-1" style="margin-bottom: 10px;">
+            <div class="slds-float_right">
+                <lightning-combobox 
+                    style="width: 100px;"
+                    name="yearSelection" 
+                    label="Select Year" 
+                    value={yearValue} 
+                    placeholder="Select a Year" 
+                    options={yearOptions} 
+                    onchange={handleYearChange}>
+                </lightning-combobox>
+            </div>
+        </div>
+    </div>
+
+    <div class="slds-grid slds-wrap slds-m-top_medium">
+        <div class="slds-col slds-size_1-of-4">
+            <div class="slds-box slds-text-align_center">
+                <img src={profileImageUrl} alt="Profile Picture" class="profile" />
+                <h5 class="nameClass">Eleanor Pena</h5>
+                <p><strong class="programOpted">Program opted:</strong> Java Full Stack</p>
+                <p class="programDes">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h6 class="about"><strong>About</strong></h6>
+                <p class="aboutDes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+
+       <div class="slds-col slds-size_3-of-4">
+            <div class="slds-grid slds-nowrap slds-m-around_small" style="width: 100%; position: relative; display: flex; justify-content: space-between; align-items: center;">
+                <div class="arrow-button" onclick={handlePrevious} style="margin-right: 10px;border: 1px solid #dacece;width: 29px;height: 79px; display: flex; justify-content: center; align-items: center;">
+                    <img src={leftArrow} alt="Previous" style="width: 13px; height: 15px; cursor: pointer;" />
+                </div>
+            
+                <div style="flex-grow: 1; display: flex; justify-content: center; overflow: hidden;">
+                    <template for:each={visibleSemesters} for:item="sem">
+                        <button key={sem.label} 
+                            style="width: 161px; height: 79px; border: 1px solid #dacece; border-radius: 6px; background: #FFF; margin-right: 5px; box-shadow: none;">
+                            {sem.label}
+                        </button>
+                    </template>
+                </div>
+            
+                <div class="arrow-button" onclick={handleNext} style="margin-left: 10px; border:1px solid #dacece; width: 29px; height: 79px; display: flex; justify-content: center; align-items: center;">
+                    <img src={rightArrow} alt="Next" style="width: 13px; height: 15px; cursor: pointer;" />
+                </div>
+
+            </div>
+
+            <div class="slds-m-top_medium progress-chart">
+                <canvas lwc:dom="manual" id="myChart"></canvas>
+            </div>
+        </div>
+
+
+    </div>
+</template>

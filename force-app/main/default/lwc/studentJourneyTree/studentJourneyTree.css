@@ -1,0 +1,109 @@
+.custom-tree {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.student-name {
+    font-size: 1.5em;
+    margin-right: 10px;
+    color: #333;
+}
+
+.program {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+    position: relative;
+}
+
+.program-box {
+    background-color: #a4396f;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.line-horizontal {
+    width: 50px;
+    height: 2px;
+    background-color: black;
+    position: relative;
+}
+
+.course-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.course-name {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.course-status {
+    font-size: 1em;
+}
+
+.line-vertical {
+    width: 2px;
+    height: 20px;
+    background-color: black;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.course-completed {
+    background-color: #57a708;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: auto;
+    position: relative;
+}
+
+.course-inprogress {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: auto;
+    position: relative;
+}
+
+.course-notstarted {
+    background-color: #627b8a;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: auto;
+    position: relative;
+}
+
+.custom-path {
+    overflow-x: auto;
+}
+
+.custom-path-scroller {
+    overflow-x: auto;
+    display: flex;
+}
+
+.slds-path__nav {
+    display: flex;
+}

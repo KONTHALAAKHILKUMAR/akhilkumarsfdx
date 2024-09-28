@@ -1,0 +1,95 @@
+<template>
+    <div class="slds-grid slds-wrap slds-m-top_medium" style="width: 935px;height: 465px;">
+        
+        <div class="slds-col slds-size_1-of-1 slds-m-bottom_medium" style="margin-bottom: 25px;margin-top: -19px;">
+            <div class="slds-col slds-size_1-of-1" style="position: relative;">
+                <div class="slds-float_left" style="position: absolute; top: 0; left: -33%; display: flex; align-items: center; cursor: pointer;" onclick={handleGoBack}>
+                    <img src={goBackArrowIcon} alt="Go Back" style="width: 20px; height: 20px; margin-right: 5px;" />
+                    <a href="javascript:void(0);" style="font-size: 16px; color: #0070d2; text-decoration: none;">Go Back</a>
+                </div>
+            </div>
+           <div class="slds-float_right" style="display: flex; align-items: center;">
+                <label for="yearSelection" style="margin-right: 10px;">Year</label>
+                <select id="yearSelection" style="width: 100px;height: 25px;" name="yearSelection" onchange={handleYearChange}>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="All Years" selected>All Years</option>
+                </select>
+            </div>
+
+
+        </div>
+        
+        <div class="slds-col slds-size_3-of-4"  > 
+            <div class="slds-grid slds-nowrap slds-m-around_small" style="width: 131%;margin-top: -11px; position: relative; display: flex; justify-content: space-between; align-items: center; ">
+                <div class="arrow-button" onclick={handlePrev} style="margin-right: 10px;border: 1px solid #f4f1f1;width: 35px;height: 79px; display: flex; justify-content: center; align-items: center;    cursor: pointer;border-radius: 6px;">
+                    <img src={leftArrow} alt="Previous" style="width: 13px; height: 15px; cursor: pointer;" class={prevArrowClass}/>
+                </div>
+
+                <div style="flex-grow: 1; display: flex; justify-content: space-around; overflow: hidden;font-weight: bold;">
+                    <template for:each={visibleSemesterButtons} for:item="sem">
+                        <button key={sem.id} class="semester-button" data-id={sem.id} onclick={handleSemesterClick} disabled={sem.isDisabled} style={sem.buttonStyle}>
+                            {sem.name}
+                        </button>
+                    </template>
+
+                </div>
+
+                <div class="arrow-button" onclick={handleNext} style="margin-left: 10px; border:1px solid #f4f1f1; width: 35px; height: 79px; display: flex; justify-content: center; align-items: center;    cursor: pointer;border-radius: 6px;">
+                    <img src={rightArrow} alt="Next" style="width: 13px; height: 15px; cursor: pointer;" class={nextArrowClass}/>
+                </div>
+            </div>
+            <template if:false={isSemisterBtnClicked}>
+                <div class="mt-3 responsive-container" style="width: 935px;height: 465px;border: 1px solid #e0e0e0;">
+                    <div class="percentage-container" style="display: flex; align-items: center;margin-left: -65px;    margin-top: 70px;">
+                        <div class="percentage-word" style="writing-mode: vertical-rl; transform: rotate(180deg); margin-right: 10px;">Percentage</div>
+                        <div class="y-axis" style="display: flex; flex-direction: column; justify-content: space-between; height: 236px;">
+                            <div class="y-axis-label">100</div>
+                            <div class="y-axis-label">80</div>
+                            <div class="y-axis-label">60</div>
+                            <div class="y-axis-label">40</div>
+                            <div class="y-axis-label">20</div>
+                            <div class="y-axis-label">0</div>
+                        </div>
+                    </div>
+
+
+                
+                    <div class="d-flex flex-row flex-wrap align-items-end bars-container" style="margin-top: -35%;">
+                        <template for:each={visibleSemesters} for:item="sem">
+                            <div key={sem.id} class="sem-container">
+                                <div class="sem-label text-center semdiv">{sem.name}</div>
+                                <div class="bar-container">
+                                    <div class="bar-graph">
+                                        <div class="bar" style={sem.barStyle}>
+                                            <span class="percentage-value">{sem.percentage}%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn sem-1-btn" style={sem.htmlButtonStyle} onmouseover={sem.hoverButtonStyle}>HTML</button>
+                                    <button class="btn sem-1-btn" style={sem.javaButtonStyle} onmouseover={sem.hoverButtonStyle}>Java</button>
+                                    <button class="btn sem-1-btn" style={sem.sqlButtonStyle} onmouseover={sem.hoverButtonStyle}>SQL</button>
+
+                                </div>
+
+                            </div>
+                        </template>
+                    </div>
+            
+                    <div class="progress-note mt-4">
+                        <strong>Note:</strong> The progress graph reflects Student’s academic journey, highlighting the percentage of marks earned each semester. Use this visualization to track their improvement over time. *Progress isn’t just about the numbers—it’s about consistent effort and growth.
+                    </div>
+                
+                </div>
+            </template>
+            <template if:true={isSemisterBtnClicked}>
+                <c-s-j-t-selected-semister-d-b 
+                ></c-s-j-t-selected-semister-d-b>
+            </template>
+        </div>       
+        
+    </div>
+</template>

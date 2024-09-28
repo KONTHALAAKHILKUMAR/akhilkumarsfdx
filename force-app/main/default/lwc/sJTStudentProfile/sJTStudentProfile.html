@@ -1,0 +1,35 @@
+<template>
+    <div class="slds-grid slds-wrap slds-m-top_medium">
+        
+
+        <div class="slds-col slds-size_1-of-4 slds-m-top_large">
+            <div class="slds-box slds-text-align_center">
+                <img src={profileImageUrl} alt="Profile Picture" class="profile" />
+                <h5 class="nameClass">{studentName}</h5>
+                <p style="font-size:14px; padding-bottom:16px;">
+                    <strong class="programOpted">Program opted:</strong> {programOpted}
+                </p>
+                <p class="programDes">{programDescription}</p>
+                <h6 class="about"><strong>{about}</strong></h6>
+                <p class="aboutDes">{aboutDescription}</p>
+                <h6 class="contact"><strong>{contact}</strong></h6>
+                <div class="contact-info">
+                    <p class="email" style="font-family: Poppins; font-size: 12px; margin-bottom: 5px;">
+                        <img src={gmailImageUrl} alt="Gmail" class="gmail" />
+                        <span style="margin-left: 10px;">{email}</span>
+                    </p>
+                    <p class="phone" style="margin-bottom: 5px;">
+                        <img src={contactImageUrl} alt="Phone" class="phone" />
+                        <span style="font-family: Poppins; font-size: 14px; margin-left: 10px;">{phone}</span>
+                    </p>
+                    <p class="linkDn">
+                        <img src={linkDnImageUrl} alt="LinkedIn" class="linkDn" />
+                        <a href="https://www.linkedin.com/login" target="_blank" style="font-family: Poppins; font-size: 14px; margin-left: 10px; text-decoration: none; color: #0070d2;">
+                            {linkedinProfile}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

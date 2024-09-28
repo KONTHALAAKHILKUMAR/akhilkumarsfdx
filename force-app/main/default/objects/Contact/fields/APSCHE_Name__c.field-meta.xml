@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>APSCHE_Name__c</fullName>
+    <label>APSCHE Name</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>APSCHE 1</fullName>
+                <default>false</default>
+                <label>APSCHE 1</label>
+            </value>
+            <value>
+                <fullName>APSCHE 2</fullName>
+                <default>false</default>
+                <label>APSCHE 2</label>
+            </value>
+            <value>
+                <fullName>APSCHE 3</fullName>
+                <default>false</default>
+                <label>APSCHE 3</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

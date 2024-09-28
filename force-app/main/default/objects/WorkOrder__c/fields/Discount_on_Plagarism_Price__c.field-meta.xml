@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Discount_on_Plagarism_Price__c</fullName>
+    <formula>If ( ISPICKVAL(DiscountCoupon__r.Discount_Type__c,&apos;Amount&apos;),DiscountCoupon__r.Discount_Amount__c ,
+If(ISPICKVAL(DiscountCoupon__r.Discount_Type__c,&apos;Percent&apos;),(( PlagiarismCheckAmount__c*DiscountCoupon__r.Discount_Amount__c)/100),0))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Discount on Plagarism Price</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

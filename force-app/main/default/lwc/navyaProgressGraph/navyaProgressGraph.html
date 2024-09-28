@@ -1,0 +1,66 @@
+<template>
+    <div class="main-container">
+        <!-- Left Sidebar Profile Section -->
+        <div class="profile-section">
+            <button class="go-back" onclick={handleGoBack}>← Go Back</button>
+            <div class="student-info">
+                <img src="https://www.example.com/profile.jpg" alt="Student Image" class="profile-image">
+                <h2 class="student-name">Scarlett Johansson</h2>
+                <p class="student-program">Program opted: Cloud Engineering</p>
+                <p class="student-about">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="contact-info">
+                    <h3>Contact</h3>
+                    <p>Email: Eleanorpena@gmail.com</p>
+                    <p>Phone: 9652348956</p>
+                    <a href="https://www.linkedin.com" target="_blank" class="linkedin-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Content Section -->
+        <div class="content-section">
+            <!-- Semester Navigation and Year Filter -->
+            <div class="semester-navigation">
+                <button class="nav-arrow" onclick={previousSemester}>‹</button>
+                <div class="semester-button" data-semester="1" onclick={handleSemesterClick}>Sem - 1 (2023)</div>
+                <div class="semester-button" data-semester="2" onclick={handleSemesterClick}>Sem - 2 (2023)</div>
+                <div class="semester-button" data-semester="3" onclick={handleSemesterClick}>Sem - 3 (2024)</div>
+                <div class="semester-button" data-semester="4" onclick={handleSemesterClick}>Sem - 4 (2024)</div>
+                <div class="semester-button" data-semester="5" onclick={handleSemesterClick}>Sem - 5 (2026)</div>
+                <button class="nav-arrow" onclick={nextSemester}>›</button>
+                <div class="year-filter">
+                    <label for="year-select">Year</label>
+                    <select id="year-select" onchange={handleYearChange}>
+                        <option value="All">All</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Progress Chart -->
+            <div class="progress-chart">
+                <div class="chart-container">
+                    <canvas lwc:dom="manual" class="bar-chart"></canvas>
+                </div>
+
+                <!-- Skills Badges -->
+                <div class="skills-badges">
+                    <span class="skill-badge">HTML</span>
+                    <span class="skill-badge">JAVA</span>
+                    <span class="skill-badge">SQL</span>
+                </div>
+
+                <!-- Note Section -->
+                <div class="note-section">
+                    <p>
+                        <strong>Note:</strong> The progress graph reflects Student's academic journey, highlighting the percentage of marks earned each semester. Use this visualization to track their improvement over time. *Progress isn't just about the numbers—it's about consistent effort and growth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

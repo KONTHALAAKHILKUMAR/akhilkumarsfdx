@@ -1,0 +1,158 @@
+<template>
+    <div class="slds-grid slds-wrap" style="width: 935px; height: 490px;margin-bottom: 20px;">
+        
+        <div class="slds-col slds-size_1-of-1 container course-progress" style="width: 305px; height: 330px;">
+            <h5 style="margin-top: -15px;color: #2E2E2E;font-family: Poppins;font-size: 16px;font-weight: 600;line-height: 15.586px;letter-spacing: 0.008px;">Skills and Total Grade</h5>
+            <div class="container">
+                <svg width="200" height="200" viewBox="0 0 190 190" class="progress-rings" preserveAspectRatio="xMidYMid meet">
+                    <text class="progress-text" x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="15" fill="#000">
+                        73%
+                    </text>
+                </svg>
+            </div>
+            <div class="skills-tags">
+                <span class="tag html-tag">HTML</span>
+                <span class="tag java-tag">JAVA</span>
+                <span class="tag sql-tag">SQL</span>
+            </div>
+        </div>
+        
+
+        <div class="slds-col slds-size_1-of-1 course-progress"
+            style="width: 624px;    height: 330px; border: 0.1px solid #dacece;border-radius: 12.858px;background: #FFF;box-shadow: 0px 0.804px 6.429px 0px rgba(110, 110, 110, 0.10);padding: 22px 10px;">
+            <h5
+                style="padding-left: 20px;padding-bottom: 16px;color: #2E2E2E;font-family: Poppins;font-size: 16px;font-weight: 600;line-height: 15.586px; letter-spacing: 0.008px;">
+                Course - Programming Fundamentals</h5>
+            <h3 style="padding-left: 45px;color: #2E2E2E;font-family: Poppins;font-size: 16px;">Modules</h3>
+
+            <div style=" display: flex; margin: 40px 0px;">
+                <div class="arrow-button" onclick={handlePrev}
+                    style="margin-right: 10px;border: 1px solid #dacece;width: 24px;height: 40px; display: flex; justify-content: center; align-items: center;cursor: pointer;border-radius: 6px;margin-top: 55px;">
+                    <img src={leftArrow} alt="Previous" style="width: 10px; height: 10px; cursor: pointer;" />
+                </div>
+
+                <div class="module">
+                    <template for:each={paginatedModules} for:item="module">
+                        <div key={module.moduleId} class="module-item">
+                            <template if:true={module.moduleId}>
+                                <span class="module-circle">{module.moduleId}</span>
+                                <div class="assignments">
+                                    <p>Assignments</p>
+                                    <template for:each={module.assignments} for:item="assignment">
+                                        <div key={assignment.progress} class="assignment">
+                                            <lightning-progress-bar value={assignment.progress}
+                                                class="progress-bar green-progress-bar slds-progress-bar__value_success"></lightning-progress-bar>
+                                            <span class="assignment-score" >{assignment.score}%</span>
+                                        </div>
+                                    </template>
+                                </div>
+                                
+                            </template>
+                            <template if:false={module.moduleId}>
+                                <div class="module-placeholder">No Module</div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="arrow-button" onclick={handleNext}
+                    style="margin-left: 10px;border: 1px solid #dacece;width: 24px;height: 40px; display: flex; justify-content: center; align-items: center;cursor: pointer;border-radius: 6px;margin-top: 55px;">
+                    <img src={rightArrow} alt="Next" style="width: 10px; height: 10px; cursor: pointer;" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="slds-col slds-size_1-of-1"
+            style="width: 480px; height: 211px; border:0.1px solid #dacece; margin: 11px 13px 0px 0px;    border-radius: 6px;">
+            <h5
+                style="text-align: left;font-size: 16px;font-family: Poppins;font-style: normal;font-weight: 600;line-height: 15.586px; letter-spacing: 0.008px;margin: 15px 0px 15px 15px;">
+                No. Of Projects - 2
+            </h5>
+            <div style="display: flex; justify-content: space-around;">
+                <div
+                    style="width: 206px; height: auto; border: 0.1px solid #dacece; padding: 15px; background-color: #DEF2FF; border-radius: 12.858px;">
+                    <div style="display: flex; align-items: center;">
+                        <div
+                            style="font-family: Poppins; font-size: 12px; font-weight: bold; color: #000000; margin-right: 8px; width: 24px; height: 24px; border-radius: 50%; display: flex; justify-content: center; align-items: center;     border: 1px solid black;">
+                            1
+                        </div>
+                        <h3
+                            style="color: #0496FF; font-family: Poppins; font-size: 12.691px; font-style: normal; font-weight: 600; margin: 0; line-height: 12.363px; letter-spacing: 0.006px;">
+                            Edubot
+                        </h3>
+                    </div>
+                    <p
+                        style="color: #4C4D4D; font-family: Poppins; font-size: 7.932px; font-style: normal; font-weight: 700; line-height: 19.037px; margin-top: 10px;">
+                        <strong>Type :</strong> Internal Project
+                    </p>
+                    <p
+                        style="color: #4C4D4D; font-family: Poppins; font-size: 7.932px; font-style: normal; font-weight: 700; line-height: 19.037px;">
+                        <strong>Brief :</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    </p>
+                    <p
+                        style="color: #4C4D4D; font-family: Poppins; font-size: 7.932px; font-style: normal; font-weight: 700; line-height: 19.037px;">
+                        <strong>Link :</strong> <a href="https://www.example.com"
+                            style="color: #0496FF; text-decoration: none;">https://www.example.com</a>
+                    </p>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1"
+                    style="width: 206px; height: 135px; border: 0.1px solid #dacece; padding: 15px; border-radius: 10px; background: #DEE8FF;">
+                    <div style="display: flex; align-items: center;">
+                        
+                        <div
+                            style="font-family: Poppins; font-size: 12px; font-weight: bold; color: #000000; margin-right: 8px; width: 24px; height: 24px; border-radius: 50%; display: flex; justify-content: center; align-items: center;     border: 1px solid black;">
+                            2
+                        </div>
+                        <h3
+                            style="color: #0496FF; font-family: Poppins; font-size: 12.691px; font-style: normal; font-weight: 600; margin: 0; line-height: 12.363px; letter-spacing: 0.006px;">
+                            Edubot
+                        </h3>
+                    </div>
+                    <p
+                        style="color: #4C4D4D; font-family: Poppins; font-size: 7.932px; font-style: normal; font-weight: 700; line-height: 19.037px; margin-top: 10px;">
+                        <strong>Type :</strong> Internal Project
+                    </p>
+                    <p
+                        style="color: #4C4D4D; font-family: Poppins; font-size: 7.932px; font-style: normal; font-weight: 700; line-height: 19.037px;">
+                        <strong>Brief :</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    </p>
+                    <p
+                        style="color: #4C4D4D; font-family: Poppins; font-size: 7.932px; font-style: normal; font-weight: 700; line-height: 19.037px;">
+                        <strong>Link :</strong> <a href="https://www.example.com"
+                            style="color: #0496FF; text-decoration: none;">https://www.example.com</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="slds-col slds-size_1-of-1"
+            style="width: 440px; height: 211px; border: 0.1px solid #dacece; margin: 11px 0px 0px 0px;    border-radius: 6px;">
+            <h5
+                style="text-align: left;font-size: 16px;font-family: Poppins;font-style: normal;font-weight: 600;line-height: 15.586px; letter-spacing: 0.008px;margin: 15px 0px 15px 15px;">
+                Feedbacks
+            </h5>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div class="slds-col slds-size_1-of-1" style="width: 380px; margin-bottom: 20px;">
+                    <p
+                        style="color: #000; font-family: Poppins; font-size: 12px; font-style: normal; font-weight: 400; line-height: 1.5; overflow-wrap: break-word; word-break: break-word;">
+                        <strong>1.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    </p>
+                </div>
+                <div class="slds-col slds-size_1-of-1" style="width: 380px;">
+                    <p
+                        style="color: #000; font-family: Poppins; font-size: 12px; font-style: normal; font-weight: 400; line-height: 1.5; overflow-wrap: break-word; word-break: break-word;">
+                        <strong>2.</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</template>

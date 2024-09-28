@@ -1,0 +1,119 @@
+<template>
+    <div class="container" style="margin: 0px 72px 0px 79px;">
+        <div>
+            <div class= "summary-section" style="  display: flex;justify-content: space-between;padding: 34px 0px 20px 0px; gap: 20px;">
+                <div style="padding: 8px 18px;border-radius: 4px;border: 1px solid #F1788D;background: #FFF; width: 209px;height: 89px;flex-shrink: 0;">
+                    <div class="slds-form-element" >
+                        <label class="slds-form-element__label" for="text-input-id-46">Total Universities</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-46" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                    </div>
+                </div>
+                <div  style="padding: 8px 18px;border-radius: 4px;border: 1px solid #9567E8;background: #FFF;width: 209px;height: 89px;">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-46">Students</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-47" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                        </div>
+                </div>
+                <div style="padding: 8px 18px;border-radius: 4px;border: 1px solid #00A2B3;background: #FFF;width: 209px;height: 89px;">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-46">Mentors</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-48" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                        </div>
+                </div>
+                <div  style="padding: 8px 18px;border-radius: 4px;border: 1px solid #95B70B;background: #FFF;width: 209px;height: 89px;">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-46">Programs</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-49" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                        </div>
+                </div>
+                <div style="padding: 8px 18px;border-radius: 4px;border: 1px solid #CF3E53;background: #FFF;width: 209px;height: 89px;">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-46">Courses</label>
+                        <div class="slds-form-element__control">
+                        <input type="number" id="text-input-id-50" readonly="" placeholder="" class="slds-input" value="" />
+                        </div>
+                        </div>
+                </div>
+            </div>
+            
+            
+        </div>
+       <!-- <div style="  display: flex;  justify-content: space-between; ">
+            <div style="width: 300px;height: 34px; border-radius: 4px;background: #FFF;" >
+                <lightning-input type="text" label="University Name"></lightning-input>
+            </div>
+            
+            <div class="slds-col" style="padding: 0px 0px 0px 20px;border-radius: 4px;margin-top: 24px;color: #FFF;font-family: Montserrat;font-size: 14px;font-style: normal;font-weight: 500;line-height: normal;">
+                <button class="slds-button slds-button_brand">Search</button>
+            </div>
+        </div> -->
+
+        <!-- Search Section -->
+            <div class="search-container">
+                <input type="text" placeholder="" value={searchKey} oninput={handleSearchKeyChange} />
+                <button onclick={handleSearch}>Search</button>
+            </div>
+        
+
+        <div class="slds-modal__content " style="max-height: 400px; overflow-y: auto;overflow-x: auto;padding: 30px 0px 0px 0px;">
+            <table>
+                <thead>
+                    <tr style="
+                    border-radius: 4px 4px 0px 0px;background: #FFFECE;">
+                        <th>S. No</th>
+                        <th>Name of University</th>
+                        <th>No. Programs Offered</th>
+                        <th>Students</th>
+                        <th>Mentors</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={paginatedUniversities} for:item="university">
+                        <tr key={university.id}>
+                            <td>{university.id}</td>
+                            <td>{university.universityName}</td>
+                            <td>{university.programsOffered}</td>
+                            <td>{university.students}</td>
+                            <td>{university.mentors}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+    
+       
+        </div>
+
+        <div class="pagination-container">
+            <button onclick={goToFirstPage} disabled={disablePrevious}>«</button>
+            <button onclick={handlePreviousPage} disabled={disablePrevious}>‹</button>
+
+            <!-- Dynamically Show Pages -->
+            <template for:each={pagesToShow} for:item="page">
+                <template if:true={page.isEllipsis}>
+                    <span key={page.pageNumber} class="ellipsis">{page.pageNumber}</span>
+                </template>
+                <template if:false={page.isEllipsis}>
+                    <button
+                        key={page.pageNumber}
+                        onclick={handlePageClick}
+                        data-page={page.pageNumber}
+                        class={page.className}
+                    >{page.pageNumber}</button>
+                </template>
+            </template>
+
+            <button onclick={handleNextPage} disabled={disableNext}>›</button>
+            <button onclick={goToLastPage} disabled={disableNext}>»</button>
+        </div>
+
+
+    </div>
+</template>
