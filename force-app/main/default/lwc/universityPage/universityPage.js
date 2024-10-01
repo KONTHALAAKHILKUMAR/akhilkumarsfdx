@@ -254,7 +254,7 @@ gotoPage(event) {
         this[NavigationMixin.GenerateUrl]({
             type: 'comm__namedPage',
             attributes: {
-                name: 'StudentPage__c'
+                name: 'examplepage__c'
             }
             
         }).then(url => {

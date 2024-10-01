@@ -110,7 +110,7 @@
     }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 900px) {
     .search-input {
         font-size: 1rem; /* Medium font size for tablets */
     }
@@ -120,7 +120,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
     .search-input {
         font-size: 1rem; /* Larger font size for desktops */
     }
